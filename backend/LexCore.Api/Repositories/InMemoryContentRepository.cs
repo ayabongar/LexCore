@@ -25,7 +25,11 @@ namespace LexCore.Api.Repositories
                 query = query.Where(i => i.Status.Equals(status, StringComparison.OrdinalIgnoreCase));
             }
 
-            return Task.FromResult(query.OrderByDescending(i => i.PublishedAt ?? DateTime.MinValue).AsEnumerable());
+            return Task.FromResult(
+                query
+                    .OrderByDescending(i => i.PublishedAt ?? DateTime.MinValue)
+                    .ThenBy(i => i.Id)
+                    .AsEnumerable());
         }
 
         public Task<ContentItem?> GetByIdAsync(Guid id)
