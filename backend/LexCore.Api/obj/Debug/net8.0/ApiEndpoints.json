@@ -1,0 +1,122 @@
+[
+  {
+    "ContainingType": "LexCore.Api.Endpoints.ContentEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapContentEndpoints\u003Eb__0_0",
+    "RelativePath": "api/content/",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "language",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "LexCore.Api.Endpoints.ContentEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapContentEndpoints\u003Eb__0_2",
+    "RelativePath": "api/content/",
+    "HttpMethod": "POST",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "LexCore.Api.DTOs.CreateContentItemRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "LexCore.Api.Endpoints.ContentEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapContentEndpoints\u003Eb__0_1",
+    "RelativePath": "api/content/{id:guid}",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "LexCore.Api.Endpoints.ContentEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapContentEndpoints\u003Eb__0_3",
+    "RelativePath": "api/content/{id:guid}",
+    "HttpMethod": "PUT",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "LexCore.Api.DTOs.UpdateContentItemRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "LexCore.Api.Endpoints.ContentEndpoints\u002B\u003C\u003Ec",
+    "Method": "\u003CMapContentEndpoints\u003Eb__0_4",
+    "RelativePath": "api/content/{id:guid}",
+    "HttpMethod": "DELETE",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  }
+]
