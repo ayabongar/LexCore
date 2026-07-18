@@ -1,0 +1,24 @@
+# .NET
+bin/
+obj/
+*.user
+*.userosscache
+*.sln.doccache
+
+# Node
+node_modules/
+dist/
+.angular/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+normalized_output.json
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
