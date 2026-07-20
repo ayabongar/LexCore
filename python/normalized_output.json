@@ -1,0 +1,39 @@
+[
+    {
+        "externalId": "RAW-001",
+        "language": "en",
+        "title": "Understanding GDPR (Updated)",
+        "status": "draft",
+        "tags": [
+            "legal",
+            "privacy",
+            "update"
+        ],
+        "publishedAt": null,
+        "body": "GDPR updated content..."
+    },
+    {
+        "externalId": "RAW-002",
+        "language": "fr",
+        "title": "Comprendre le RGPD",
+        "status": "draft",
+        "tags": [
+            "juridique",
+            "confidentialit\u00e9"
+        ],
+        "publishedAt": null,
+        "body": "Le RGPD est un r\u00e8glement du droit de l'UE..."
+    },
+    {
+        "externalId": "RAW-003",
+        "language": "en",
+        "title": "Case Law 2024",
+        "status": "published",
+        "tags": [
+            "case",
+            "law"
+        ],
+        "publishedAt": "2024-01-15T10:00:00Z",
+        "body": "A summary of recent case law..."
+    }
+]

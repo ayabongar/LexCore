@@ -1,0 +1,131 @@
+<div class="container">
+  <header class="header">
+    <h1>LexCore - Content Manager</h1>
+    <p>Manage publishable content items with language and status filtering</p>
+  </header>
+
+  <div class="controls-section">
+    <div class="filters">
+      <div class="filter-group">
+        <label for="language">Language:</label>
+        <select id="language" [(ngModel)]="selectedLanguage" (change)="onFilterChange()">
+          <option value="">All Languages</option>
+          <option *ngFor="let lang of languages" [value]="lang">{{ lang }}</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="status">Status:</label>
+        <select id="status" [(ngModel)]="selectedStatus" (change)="onFilterChange()">
+          <option value="">All Statuses</option>
+          <option *ngFor="let st of statuses" [value]="st">{{ st }}</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary" (click)="toggleForm()">
+        {{ showForm ? 'Cancel' : '+ New Item' }}
+      </button>
+    </div>
+
+    <div *ngIf="error" class="error-message">
+      {{ error }}
+    </div>
+
+    <div *ngIf="loading" class="loading-indicator">
+      Loading...
+    </div>
+  </div>
+
+  <div *ngIf="showForm" class="form-section">
+    <h2>{{ editingId ? 'Edit' : 'Create' }} Content Item</h2>
+    <form (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <label for="externalId">External ID:</label>
+        <input type="text" id="externalId" [(ngModel)]="formData.externalId" name="externalId" required>
+      </div>
+
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" [(ngModel)]="formData.title" name="title" required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="language">Language:</label>
+          <select id="language" [(ngModel)]="formData.language" name="language">
+            <option *ngFor="let lang of languages" [value]="lang">{{ lang }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="status">Status:</label>
+          <select id="status" [(ngModel)]="formData.status" name="status">
+            <option *ngFor="let st of statuses" [value]="st">{{ st }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="body">Body:</label>
+        <textarea id="body" [(ngModel)]="formData.body" name="body" rows="5"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="tags">Tags:</label>
+        <div class="tag-input">
+          <input type="text" id="tags" [(ngModel)]="tagInput" name="tagInput" placeholder="Enter tag and press Add">
+          <button type="button" class="btn btn-secondary" (click)="addTag()">Add Tag</button>
+        </div>
+        <div class="tags-list">
+          <span *ngFor="let tag of formData.tags; let i = index" class="tag">
+            {{ tag }}
+            <button type="button" class="tag-remove" (click)="removeTag(i)">×</button>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-success">{{ editingId ? 'Update' : 'Create' }}</button>
+        <button type="button" class="btn btn-secondary" (click)="toggleForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="items-section">
+    <h2>Content Items ({{ filteredItems.length }})</h2>
+
+    <div *ngIf="filteredItems.length === 0 && !loading" class="empty-state">
+      <p>No content items found.</p>
+    </div>
+
+    <table *ngIf="filteredItems.length > 0" class="items-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Language</th>
+          <th>Status</th>
+          <th>External ID</th>
+          <th>Tags</th>
+          <th>Published</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of filteredItems">
+          <td class="title-cell">{{ item.title }}</td>
+          <td>{{ item.language }}</td>
+          <td><span class="status-badge" [ngClass]="'status-' + item.status">{{ item.status }}</span></td>
+          <td>{{ item.externalId }}</td>
+          <td>
+            <span *ngFor="let tag of item.tags" class="tag-badge">{{ tag }}</span>
+          </td>
+          <td>{{ item.publishedAt ? (item.publishedAt | date:'short') : '-' }}</td>
+          <td class="actions-cell">
+            <button class="btn btn-sm btn-info" (click)="editItem(item)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteItem(item.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
